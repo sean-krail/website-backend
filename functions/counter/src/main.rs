@@ -2,8 +2,13 @@ use aws_sdk_dynamodb::{
     types::{AttributeValue, ReturnValue},
     Client as DynamoDbClient, Error as OtherError,
 };
-use lambda_http::{run, service_fn, Body, Error, Request, Response};
-use std::env;
+use lambda_http::{
+    http::{Method, StatusCode},
+    run, service_fn, Body, Error, Request, RequestExt, Response,
+};
+use lambda_runtime::tower::ServiceBuilder;
+use std::{env, time::Duration};
+use tower_http::cors::{AllowOrigin, CorsLayer};
 use tracing::info;
 
 const COUNTER_NAME: &str = "likes";
@@ -29,9 +34,16 @@ async fn main() -> Result<(), Error> {
     // Get table name from environment
     let table_name = env::var("TABLE_NAME").expect("Missing TABLE_NAME env var");
 
-    run(service_fn(|event: Request| async {
-        handle_request(event, &ddb_client, &table_name).await
-    }))
+    run(ServiceBuilder::new()
+        .layer(
+            CorsLayer::new()
+                .allow_methods(vec![Method::GET, Method::POST])
+                .allow_origin(AllowOrigin::exact("https://seankrail.dev".parse().unwrap()))
+                .max_age(Duration::from_secs(60 * 60)),
+        )
+        .service(service_fn(|event: Request| async {
+            handle_request(event, &ddb_client, &table_name).await
+        })))
     .await
 }
 
@@ -42,12 +54,22 @@ async fn handle_request(
 ) -> Result<Response<Body>, Error> {
     info!("Received request: {:?}", event);
 
+    if event.raw_http_path() == "/favicon.ico"
+        || (event.method() != Method::GET && event.method() != Method::POST)
+    {
+        let resp = Response::builder()
+            .status(StatusCode::BAD_REQUEST)
+            .body("Unexpected input".into())
+            .map_err(Box::new)?;
+        return Ok(resp);
+    }
+
     // Insert into the table
     let new_count = increment_counter(ddb_client, table_name).await?;
 
     //Send back a 200 - success
     let resp = Response::builder()
-        .status(200)
+        .status(StatusCode::OK)
         .header("content-type", "text/html")
         .body(new_count.into())
         .map_err(Box::new)?;
