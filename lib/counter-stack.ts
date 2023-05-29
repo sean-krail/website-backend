@@ -1,13 +1,18 @@
 import { Duration, Stack, StackProps } from "aws-cdk-lib";
-import { AttributeType, Table } from "aws-cdk-lib/aws-dynamodb";
+import { LambdaRestApi } from "aws-cdk-lib/aws-apigateway";
 import {
-  Architecture,
-  Code,
-  Function,
-  FunctionUrlAuthType,
-  Runtime,
-} from "aws-cdk-lib/aws-lambda";
+  Certificate,
+  CertificateValidation,
+} from "aws-cdk-lib/aws-certificatemanager";
+import { AttributeType, Table } from "aws-cdk-lib/aws-dynamodb";
+import { Architecture, Code, Function, Runtime } from "aws-cdk-lib/aws-lambda";
 import { RetentionDays } from "aws-cdk-lib/aws-logs";
+import {
+  ARecord,
+  PublicHostedZone,
+  RecordTarget,
+} from "aws-cdk-lib/aws-route53";
+import { ApiGatewayDomain } from "aws-cdk-lib/aws-route53-targets";
 import { Construct } from "constructs";
 
 export class CounterStack extends Stack {
@@ -36,15 +41,35 @@ export class CounterStack extends Stack {
       logRetention: RetentionDays.ONE_DAY,
     });
     table.grantReadWriteData(fn);
-    fn.addFunctionUrl({
-      authType: FunctionUrlAuthType.NONE,
-      cors: {
-        allowedOrigins: [
-          "https://seankrail.dev",
-          "https://krail.dev",
-          "https://seankrail.com",
-        ],
+
+    const domainName = "api.seankrail.dev";
+    const zone = new PublicHostedZone(this, "PublicHostedZone", {
+      zoneName: domainName,
+    });
+
+    const certificate = new Certificate(this, "Certificate", {
+      domainName,
+      validation: CertificateValidation.fromDns(zone),
+    });
+
+    const api = new LambdaRestApi(this, "LambdaRestApi", {
+      domainName: {
+        domainName,
+        certificate,
       },
+      handler: fn,
+      // Because we disable the proxy integration, our Lambda function must configure and return all CORS response headers
+      proxy: false,
+      disableExecuteApiEndpoint: true,
+    });
+    const counter = api.root.addResource("count").addResource("{counter}");
+    counter.addMethod("GET");
+    counter.addMethod("POST");
+
+    new ARecord(this, "AliasRecord", {
+      zone,
+      target: RecordTarget.fromAlias(new ApiGatewayDomain(api.domainName!)),
+      ttl: Duration.hours(1),
     });
   }
 }

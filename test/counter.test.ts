@@ -38,17 +38,6 @@ test("Lambda Function is created and references DynamoDB Table", () => {
   });
 });
 
-test("Lambda Function Url is created", () => {
-  const app = new App();
-  const stack = new CounterStack(app, "TestCounterStack");
-
-  const template = Template.fromStack(stack);
-
-  template.hasResourceProperties("AWS::Lambda::Url", {
-    AuthType: "NONE",
-  });
-});
-
 test("Lambda Function for CloudWatch logging is created", () => {
   const app = new App();
   const stack = new CounterStack(app, "TestCounterStack");
