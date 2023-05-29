@@ -1,0 +1,59 @@
+name: Build PR Changes
+
+on:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Cargo cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            functions/counter/target/
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: ${{ runner.os }}-cargo-
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: .nvmrc
+          cache: yarn
+
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11' 
+
+      - name: Install Cargo Lambda
+        run: |
+          pip install cargo-lambda
+
+      - name: Install yarn dependencies
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096
+        run: |
+          yarn
+
+      - name: Build Lambda function
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096
+        run: |
+          yarn build-function
+          ls functions/counter/target/lambda/counter/bootstrap
+
+      - name: AWS CDK Synth
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096
+        run: |
+          yarn build
+          yarn cdk synth
