@@ -1,0 +1,86 @@
+name: Deploy AWS CDK
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    # these permissions are needed to interact with GitHub's OIDC Token endpoint
+    permissions:
+      id-token: write
+      contents: read
+    env:
+      AWS_DEFAULT_REGION: us-east-1
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Cargo cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            functions/counter/target/
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: ${{ runner.os }}-cargo-
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: .nvmrc
+          cache: yarn
+
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11' 
+
+      - name: Install Cargo Lambda
+        run: |
+          pip install cargo-lambda
+
+      - name: Install yarn dependencies
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096
+        run: |
+          yarn
+
+      - name: Build Lambda function
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096
+        run: |
+          yarn build-function
+          ls functions/counter/target/lambda/counter/bootstrap
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          role-session-name: gh-actions-sean-krail-website-backend-main
+          aws-region: ${{ env.AWS_DEFAULT_REGION }}
+
+      - name: AWS CDK Synth
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096
+        run: |
+          yarn build
+          yarn cdk synth
+
+      - name: AWS CDK Diff
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096
+        run: |
+          yarn cdk diff
+
+      - name: AWS CDK Deploy
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096
+        run: |
+          yarn cdk deploy --require-approval never
