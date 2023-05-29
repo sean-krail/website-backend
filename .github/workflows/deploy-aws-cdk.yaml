@@ -34,10 +34,6 @@ jobs:
           node-version-file: .nvmrc
           cache: yarn
 
-      - uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-
       - uses: actions/setup-python@v4
         with:
           python-version: '3.11' 
