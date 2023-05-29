@@ -6,6 +6,12 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # these permissions are needed to interact with GitHub's OIDC Token endpoint
+    permissions:
+      id-token: write
+      contents: read
+    env:
+      AWS_DEFAULT_REGION: us-east-1
     steps:
       - uses: actions/checkout@v3
 
@@ -57,3 +63,31 @@ jobs:
         run: |
           yarn build
           yarn cdk synth
+
+      # testing
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          role-session-name: gh-actions-sean-krail-website-backend-main
+          aws-region: ${{ env.AWS_DEFAULT_REGION }}
+
+      - name: AWS CDK Synth
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096
+        run: |
+          yarn build
+          yarn cdk synth
+
+      - name: AWS CDK Diff
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096
+        run: |
+          yarn cdk diff
+
+      - name: AWS CDK Deploy
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096
+        run: |
+          yarn cdk deploy --require-approval never
