@@ -11,8 +11,6 @@ use std::{env, time::Duration};
 use tower_http::cors::{AllowOrigin, CorsLayer};
 use tracing::info;
 
-const COUNTER_NAME: &str = "likes";
-
 #[tokio::main]
 async fn main() -> Result<(), Error> {
     // Configure tracing
@@ -39,6 +37,8 @@ async fn main() -> Result<(), Error> {
             CorsLayer::new()
                 .allow_methods(vec![Method::GET, Method::POST])
                 .allow_origin(AllowOrigin::exact("https://seankrail.dev".parse().unwrap()))
+                // Uncomment below for development
+                // .allow_origin(AllowOrigin::any())
                 .max_age(Duration::from_secs(60 * 60)),
         )
         .service(service_fn(|event: Request| async {
@@ -54,36 +54,68 @@ async fn handle_request(
 ) -> Result<Response<Body>, Error> {
     info!("Received request: {:?}", event);
 
-    if event.raw_http_path() == "/favicon.ico"
-        || (event.method() != Method::GET && event.method() != Method::POST)
-    {
+    let path_parameters = event.path_parameters();
+    let counter_id = path_parameters.first("counter").unwrap();
+
+    let resp: String;
+    if event.method() == Method::GET {
+        resp = get_count(ddb_client, table_name, counter_id).await?;
+    } else if event.method() == Method::POST {
+        resp = increment_counter(ddb_client, table_name, counter_id).await?;
+    } else {
         let resp = Response::builder()
             .status(StatusCode::BAD_REQUEST)
-            .body("Unexpected input".into())
+            .body("Unsupported operation".into())
             .map_err(Box::new)?;
         return Ok(resp);
     }
-
-    // Insert into the table
-    let new_count = increment_counter(ddb_client, table_name).await?;
 
     //Send back a 200 - success
     let resp = Response::builder()
         .status(StatusCode::OK)
         .header("content-type", "text/html")
-        .body(new_count.into())
+        .body(resp.into())
         .map_err(Box::new)?;
     Ok(resp)
+}
+
+pub async fn get_count(
+    ddb_client: &DynamoDbClient,
+    table_name: &str,
+    counter_id: &str,
+) -> Result<String, OtherError> {
+    let request = ddb_client
+        .get_item()
+        .table_name(table_name)
+        .key("id", AttributeValue::S(counter_id.to_string()))
+        .projection_expression("#count")
+        .expression_attribute_names("#count", "count");
+
+    info!("Getting item from DynamoDB");
+
+    let resp = request.send().await?;
+
+    info!("Got item from DynamoDB {:?}", resp);
+
+    Ok(resp
+        .item()
+        .unwrap()
+        .get("count")
+        .unwrap()
+        .as_n()
+        .unwrap()
+        .to_string())
 }
 
 pub async fn increment_counter(
     ddb_client: &DynamoDbClient,
     table_name: &str,
+    counter_id: &str,
 ) -> Result<String, OtherError> {
     let request = ddb_client
         .update_item()
         .table_name(table_name)
-        .key("id", AttributeValue::S(COUNTER_NAME.to_string()))
+        .key("id", AttributeValue::S(counter_id.to_string()))
         .update_expression("ADD #count :incr")
         .expression_attribute_names("#count", "count")
         .expression_attribute_values(":incr", AttributeValue::N(1.to_string()))
