@@ -6,6 +6,7 @@
     "build": "tsc",
     "build-function": "cd functions/counter && cargo lambda build --release --arm64",
     "build-all": "yarn build-function && yarn build",
+    "start": "cd functions/counter && cargo lambda watch --env-var TABLE_NAME=Counter",
     "watch": "tsc -w",
     "test": "jest",
     "cdk": "cdk",
