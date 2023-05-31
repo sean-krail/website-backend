@@ -38,6 +38,7 @@ export class CounterStack extends Stack {
       environment: {
         TABLE_NAME: table.tableName,
       },
+      reservedConcurrentExecutions: 2,
       logRetention: RetentionDays.ONE_DAY,
     });
     table.grantReadWriteData(fn);
@@ -61,6 +62,10 @@ export class CounterStack extends Stack {
       // Because we disable the proxy integration, our Lambda function must configure and return all CORS response headers
       proxy: false,
       disableExecuteApiEndpoint: true,
+      deployOptions: {
+        throttlingRateLimit: 2,
+        throttlingBurstLimit: 5,
+      },
     });
     const counter = api.root.addResource("count").addResource("{counter}");
     counter.addMethod("GET");
