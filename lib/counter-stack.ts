@@ -1,5 +1,5 @@
 import { Duration, Stack, StackProps } from "aws-cdk-lib";
-import { LambdaRestApi } from "aws-cdk-lib/aws-apigateway";
+import { EndpointType, LambdaRestApi } from "aws-cdk-lib/aws-apigateway";
 import {
   Certificate,
   CertificateValidation,
@@ -7,13 +7,9 @@ import {
 import { AttributeType, Table } from "aws-cdk-lib/aws-dynamodb";
 import { Architecture, Code, Function, Runtime } from "aws-cdk-lib/aws-lambda";
 import { RetentionDays } from "aws-cdk-lib/aws-logs";
-import {
-  ARecord,
-  PublicHostedZone,
-  RecordTarget,
-} from "aws-cdk-lib/aws-route53";
-import { ApiGatewayDomain } from "aws-cdk-lib/aws-route53-targets";
 import { Construct } from "constructs";
+
+const DOMAIN_NAME = "api.seankrail.dev";
 
 export class CounterStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
@@ -43,21 +39,18 @@ export class CounterStack extends Stack {
     });
     table.grantReadWriteData(fn);
 
-    const domainName = "api.seankrail.dev";
-    const zone = new PublicHostedZone(this, "PublicHostedZone", {
-      zoneName: domainName,
-    });
-
     const certificate = new Certificate(this, "Certificate", {
-      domainName,
-      validation: CertificateValidation.fromDns(zone),
+      domainName: DOMAIN_NAME,
+      validation: CertificateValidation.fromDns(),
     });
 
     const api = new LambdaRestApi(this, "LambdaRestApi", {
       domainName: {
-        domainName,
+        domainName: DOMAIN_NAME,
         certificate,
+        endpointType: EndpointType.EDGE,
       },
+      endpointTypes: [EndpointType.EDGE],
       handler: fn,
       // Because we disable the proxy integration, our Lambda function must configure and return all CORS response headers
       proxy: false,
@@ -70,11 +63,5 @@ export class CounterStack extends Stack {
     const counter = api.root.addResource("count").addResource("{counter}");
     counter.addMethod("GET");
     counter.addMethod("POST");
-
-    new ARecord(this, "AliasRecord", {
-      zone,
-      target: RecordTarget.fromAlias(new ApiGatewayDomain(api.domainName!)),
-      ttl: Duration.hours(1),
-    });
   }
 }
