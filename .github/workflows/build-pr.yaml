@@ -27,6 +27,10 @@ jobs:
 
       - name: Install Cargo Lambda
         run: |
+          which python
+          python --version
+          which pip
+          pip --version
           pip install cargo-lambda ziglang
 
       - name: Get yarn cache directory path
