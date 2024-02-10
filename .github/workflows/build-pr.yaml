@@ -50,16 +50,8 @@ jobs:
 
       - name: Build Lambda function
         run: |
-          ls -lAhk
-          ls -lAhk .venv/
-          ls -lAhk .venv/bin/
-          which python
-          python --version
-          which pip
-          pip --version
           pip show ziglang
-          ls -lAhk ~/.local/
-          ls -lAhk ~/.local/bin/
+          python3 -m site --user-base
           yarn build-function
           ls functions/counter/target/lambda/counter/bootstrap
 
