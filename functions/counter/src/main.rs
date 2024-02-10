@@ -7,7 +7,6 @@ use lambda_http::{
     run, service_fn, Body, Error, Request, RequestExt, Response,
 };
 use lambda_runtime::tower::ServiceBuilder;
-use std::{env, time::Duration};
 use tower_http::cors::{AllowOrigin, CorsLayer};
 use tracing::info;
 
@@ -30,7 +29,7 @@ async fn main() -> Result<(), Error> {
     // Create the DynamoDB client
     let ddb_client = DynamoDbClient::new(&aws_sdk_config);
     // Get table name from environment
-    let table_name = env::var("TABLE_NAME").expect("Missing TABLE_NAME env var");
+    let table_name = std::env::var("TABLE_NAME").expect("Missing TABLE_NAME env var");
 
     run(ServiceBuilder::new()
         .layer(
@@ -39,7 +38,6 @@ async fn main() -> Result<(), Error> {
                 .allow_origin(AllowOrigin::exact("https://seankrail.dev".parse().unwrap()))
                 // Uncomment below for development
                 // .allow_origin(AllowOrigin::any())
-                .max_age(Duration::from_secs(60 * 60)),
         )
         .service(service_fn(|event: Request| async {
             handle_request(event, &ddb_client, &table_name).await

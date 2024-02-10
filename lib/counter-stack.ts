@@ -10,6 +10,7 @@ import { RetentionDays } from "aws-cdk-lib/aws-logs";
 import { Construct } from "constructs";
 
 const DOMAIN_NAME = "api.seankrail.dev";
+const ORIGIN = "https://seankrail.dev";
 
 export class CounterStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
@@ -63,5 +64,11 @@ export class CounterStack extends Stack {
     const counter = api.root.addResource("count").addResource("{counter}");
     counter.addMethod("GET");
     counter.addMethod("POST");
+    counter.addCorsPreflight({
+      allowMethods: ["GET", "POST"],
+      allowOrigins: [ORIGIN],
+      // Uncomment below for development
+      // allowOrigins: ["*"],
+    });
   }
 }
