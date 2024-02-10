@@ -50,6 +50,9 @@ jobs:
 
       - name: Build Lambda function
         run: |
+          ls -lAhk
+          ls -lAhk .venv/
+          ls -lAhk .venv/bin/
           yarn build-function
           ls functions/counter/target/lambda/counter/bootstrap
 
