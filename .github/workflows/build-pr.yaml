@@ -27,7 +27,7 @@ jobs:
 
       - name: Install Cargo Lambda
         run: |
-          pip install cargo-lambda ziglang
+          pip install cargo-lambda
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
@@ -44,10 +44,11 @@ jobs:
         run: |
           yarn
 
+      - uses: goto-bus-stop/setup-zig@v2
+
+
       - name: Build Lambda function
         run: |
-          pip show ziglang
-          python3 -m site
           yarn build-function
           ls functions/counter/target/lambda/counter/bootstrap
 
