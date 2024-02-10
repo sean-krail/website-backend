@@ -14,11 +14,14 @@ jobs:
       contents: read
     env:
       AWS_DEFAULT_REGION: us-east-1
+      NODE_OPTIONS: --max-old-space-size=4096
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+
+      - uses: jdx/mise-action@v2
 
       - name: Setup Cargo cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: |
             ~/.cargo/bin/
@@ -29,54 +32,46 @@ jobs:
           key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
           restore-keys: ${{ runner.os }}-cargo-
 
-      - uses: actions/setup-node@v3
-        with:
-          node-version-file: .nvmrc
-          cache: yarn
-
-      - uses: actions/setup-python@v4
-        with:
-          python-version: '3.11' 
-
       - name: Install Cargo Lambda
         run: |
           pip install cargo-lambda
 
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "dir=$(yarn config get cacheFolder)" >> $GITHUB_OUTPUT
+
+      - uses: actions/cache@v4
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
       - name: Install yarn dependencies
-        env:
-          NODE_OPTIONS: --max-old-space-size=4096
         run: |
           yarn
 
       - name: Build Lambda function
-        env:
-          NODE_OPTIONS: --max-old-space-size=4096
         run: |
           yarn build-function
           ls functions/counter/target/lambda/counter/bootstrap
 
       - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v2
+        uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
           role-session-name: gh-actions-sean-krail-website-backend-main
           aws-region: ${{ env.AWS_DEFAULT_REGION }}
 
       - name: AWS CDK Synth
-        env:
-          NODE_OPTIONS: --max-old-space-size=4096
         run: |
           yarn build
           yarn cdk synth
 
       - name: AWS CDK Diff
-        env:
-          NODE_OPTIONS: --max-old-space-size=4096
         run: |
           yarn cdk diff
 
       - name: AWS CDK Deploy
-        env:
-          NODE_OPTIONS: --max-old-space-size=4096
         run: |
           yarn cdk deploy --require-approval never

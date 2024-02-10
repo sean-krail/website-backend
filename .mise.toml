@@ -1,0 +1,8 @@
+[tools]
+node = "20"
+python = {version="3.12", virtualenv=".venv"}
+
+[settings]
+experimental = true
+not_found_auto_install = true
+python_venv_auto_create = true

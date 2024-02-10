@@ -18,7 +18,6 @@
     "inlineSources": true,
     "experimentalDecorators": true,
     "strictPropertyInitialization": false,
-    "typeRoots": ["@types/jest"],
     "types": ["@types/jest"]
   },
   "exclude": ["cdk.out", "dist"]

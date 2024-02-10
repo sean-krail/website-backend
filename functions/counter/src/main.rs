@@ -26,7 +26,7 @@ async fn main() -> Result<(), Error> {
         .init();
 
     // Get config from environment
-    let aws_sdk_config = aws_config::load_from_env().await;
+    let aws_sdk_config = aws_config::load_defaults(aws_config::BehaviorVersion::latest()).await;
     // Create the DynamoDB client
     let ddb_client = DynamoDbClient::new(&aws_sdk_config);
     // Get table name from environment
