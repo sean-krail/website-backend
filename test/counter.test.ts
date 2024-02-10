@@ -24,7 +24,7 @@ test("Lambda Function is created and references DynamoDB Table", () => {
       Properties: {
         TableName: "Counter",
       },
-    })
+    }),
   )[0];
   template.hasResourceProperties("AWS::Lambda::Function", {
     Runtime: "provided.al2",
