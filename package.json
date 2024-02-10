@@ -16,34 +16,34 @@
     "format": "eslint --fix bin/ lib/ test/ && prettier --write bin/ lib/ test/",
     "format-function": "cd functions/counter && cargo fmt",
     "format-all": "yarn format && yarn format-function",
-    "postinstall": "husky install",
+    "postinstall": "husky",
     "prepack": "pinst --disable",
     "postpack": "pinst --enable"
   },
   "dependencies": {
-    "aws-cdk-lib": "^2.83.1",
-    "constructs": "^10.2.49",
+    "aws-cdk-lib": "^2.126.0",
+    "constructs": "^10.3.0",
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {
-    "@types/jest": "^29.5.2",
-    "@types/node": "^18.16.16",
-    "@typescript-eslint/eslint-plugin": "^5.59.9",
-    "@typescript-eslint/parser": "^5.59.9",
-    "aws-cdk": "^2.83.1",
-    "eslint": "^8.42.0",
-    "eslint-config-airbnb-typescript": "^17.0.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-import-resolver-node": "^0.3.7",
-    "eslint-plugin-import": "^2.27.5",
-    "husky": "^8.0.3",
-    "jest": "^29.5.0",
-    "lint-staged": "^13.2.2",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.11.17",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "aws-cdk": "^2.126.0",
+    "eslint": "^8.56.0",
+    "eslint-config-airbnb-typescript": "^17.1.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-import-resolver-node": "^0.3.9",
+    "eslint-plugin-import": "^2.29.1",
+    "husky": "^9.0.10",
+    "jest": "^29.7.0",
+    "lint-staged": "^15.2.2",
     "pinst": "^3.0.0",
-    "prettier": "^2.8.8",
-    "rimraf": "^5.0.1",
-    "ts-jest": "^29.1.0",
-    "typescript": "~5.0.4"
+    "prettier": "^3.2.5",
+    "rimraf": "^5.0.5",
+    "ts-jest": "^29.1.2",
+    "typescript": "~5.3.3"
   },
   "lint-staged": {
     "{bin,lib,test}/**/*.ts": [
@@ -51,5 +51,5 @@
       "prettier --write"
     ]
   },
-  "packageManager": "yarn@3.6.0"
+  "packageManager": "yarn@4.1.0"
 }

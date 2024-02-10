@@ -26,12 +26,14 @@ yarn cdk synth
 
 ## Updating
 
-### Updating node via nvm
+### Updating node via [mise](https://mise.jdx.dev/getting-started.html)
 
-There's a `.nvmrc` in this project root, so all you need to run is:
+There's a `.mise.toml in this project root, so all you need to run is:
 
 ```sh
-nvm use
+mise use node@20
+node -v
+npm -v
 ```
 
 ### Updating yarn
@@ -48,6 +50,13 @@ yarn set version stable
 
 ```sh
 yarn up -i '*' '@*/*'
+```
+
+### Updating cargo crates
+
+```sh
+cargo update
+cargo upgrade
 ```
 
 ## Useful CDK commands
