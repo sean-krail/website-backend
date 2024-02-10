@@ -58,6 +58,8 @@ jobs:
           which pip
           pip --version
           pip show ziglang
+          ls -lAhk ~/.local/
+          ls -lAhk ~/.local/bin/
           yarn build-function
           ls functions/counter/target/lambda/counter/bootstrap
 
