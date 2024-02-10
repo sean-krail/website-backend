@@ -53,6 +53,11 @@ jobs:
           ls -lAhk
           ls -lAhk .venv/
           ls -lAhk .venv/bin/
+          which python
+          python --version
+          which pip
+          pip --version
+          pip show ziglang
           yarn build-function
           ls functions/counter/target/lambda/counter/bootstrap
 
