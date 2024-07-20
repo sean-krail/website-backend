@@ -28,7 +28,7 @@ export class CounterStack extends Stack {
       // Directory with our `bootstrap` executable
       // You must run `yarn build-function` or `yarn build-all` first!
       code: Code.fromAsset("./functions/counter/target/lambda/counter"),
-      runtime: Runtime.PROVIDED_AL2,
+      runtime: Runtime.PROVIDED_AL2023,
       architecture: Architecture.ARM_64,
       handler: "not.required",
       timeout: Duration.seconds(10),

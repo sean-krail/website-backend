@@ -35,9 +35,9 @@ async fn main() -> Result<(), Error> {
         .layer(
             CorsLayer::new()
                 .allow_methods(vec![Method::GET, Method::POST])
-                .allow_origin(AllowOrigin::exact("https://seankrail.dev".parse().unwrap()))
-                // Uncomment below for development
-                // .allow_origin(AllowOrigin::any())
+                .allow_origin(AllowOrigin::exact("https://seankrail.dev".parse().unwrap())),
+            // Uncomment below for development
+            // .allow_origin(AllowOrigin::any()),
         )
         .service(service_fn(|event: Request| async {
             handle_request(event, &ddb_client, &table_name).await
