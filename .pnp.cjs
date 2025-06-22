@@ -39,7 +39,7 @@ const RAW_RUNTIME_STATE =
           ["eslint-config-prettier", "virtual:44e03e6cb78931061317cced3f16fdb870ddeb05a8ea49728cb4e3c443d59cea2458e23cae0cdf72d9f42f926968c535ad93fba614e57b07abe87ad4c620e3ed#npm:8.10.0"],\
           ["eslint-import-resolver-node", "npm:0.3.9"],\
           ["eslint-plugin-import", "virtual:44e03e6cb78931061317cced3f16fdb870ddeb05a8ea49728cb4e3c443d59cea2458e23cae0cdf72d9f42f926968c535ad93fba614e57b07abe87ad4c620e3ed#npm:2.29.1"],\
-          ["husky", "npm:9.1.1"],\
+          ["husky", "npm:9.1.7"],\
           ["jest", "virtual:44e03e6cb78931061317cced3f16fdb870ddeb05a8ea49728cb4e3c443d59cea2458e23cae0cdf72d9f42f926968c535ad93fba614e57b07abe87ad4c620e3ed#npm:29.7.0"],\
           ["lint-staged", "npm:15.2.7"],\
           ["pinst", "npm:3.0.0"],\
@@ -4392,10 +4392,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["husky", [\
-      ["npm:9.1.1", {\
-        "packageLocation": "../../.yarn/berry/cache/husky-npm-9.1.1-fe3f215c23-10c0.zip/node_modules/husky/",\
+      ["npm:9.1.7", {\
+        "packageLocation": "../../.yarn/berry/cache/husky-npm-9.1.7-5b02eaabc4-10c0.zip/node_modules/husky/",\
         "packageDependencies": [\
-          ["husky", "npm:9.1.1"]\
+          ["husky", "npm:9.1.7"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -7737,7 +7737,7 @@ const RAW_RUNTIME_STATE =
           ["eslint-config-prettier", "virtual:44e03e6cb78931061317cced3f16fdb870ddeb05a8ea49728cb4e3c443d59cea2458e23cae0cdf72d9f42f926968c535ad93fba614e57b07abe87ad4c620e3ed#npm:8.10.0"],\
           ["eslint-import-resolver-node", "npm:0.3.9"],\
           ["eslint-plugin-import", "virtual:44e03e6cb78931061317cced3f16fdb870ddeb05a8ea49728cb4e3c443d59cea2458e23cae0cdf72d9f42f926968c535ad93fba614e57b07abe87ad4c620e3ed#npm:2.29.1"],\
-          ["husky", "npm:9.1.1"],\
+          ["husky", "npm:9.1.7"],\
           ["jest", "virtual:44e03e6cb78931061317cced3f16fdb870ddeb05a8ea49728cb4e3c443d59cea2458e23cae0cdf72d9f42f926968c535ad93fba614e57b07abe87ad4c620e3ed#npm:29.7.0"],\
           ["lint-staged", "npm:15.2.7"],\
           ["pinst", "npm:3.0.0"],\
