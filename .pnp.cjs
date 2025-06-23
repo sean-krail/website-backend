@@ -31,7 +31,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:20.14.11"],\
           ["@typescript-eslint/eslint-plugin", "virtual:44e03e6cb78931061317cced3f16fdb870ddeb05a8ea49728cb4e3c443d59cea2458e23cae0cdf72d9f42f926968c535ad93fba614e57b07abe87ad4c620e3ed#npm:7.16.1"],\
           ["@typescript-eslint/parser", "virtual:44e03e6cb78931061317cced3f16fdb870ddeb05a8ea49728cb4e3c443d59cea2458e23cae0cdf72d9f42f926968c535ad93fba614e57b07abe87ad4c620e3ed#npm:7.16.1"],\
-          ["aws-cdk", "npm:2.149.0"],\
+          ["aws-cdk", "npm:2.1019.1"],\
           ["aws-cdk-lib", "virtual:44e03e6cb78931061317cced3f16fdb870ddeb05a8ea49728cb4e3c443d59cea2458e23cae0cdf72d9f42f926968c535ad93fba614e57b07abe87ad4c620e3ed#npm:2.149.0"],\
           ["constructs", "npm:10.3.0"],\
           ["eslint", "virtual:44e03e6cb78931061317cced3f16fdb870ddeb05a8ea49728cb4e3c443d59cea2458e23cae0cdf72d9f42f926968c535ad93fba614e57b07abe87ad4c620e3ed#npm:9.29.0"],\
@@ -2964,10 +2964,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["aws-cdk", [\
-      ["npm:2.149.0", {\
-        "packageLocation": "./.yarn/unplugged/aws-cdk-npm-2.149.0-d26b644e92/node_modules/aws-cdk/",\
+      ["npm:2.1019.1", {\
+        "packageLocation": "./.yarn/unplugged/aws-cdk-npm-2.1019.1-c129cd6b7a/node_modules/aws-cdk/",\
         "packageDependencies": [\
-          ["aws-cdk", "npm:2.149.0"],\
+          ["aws-cdk", "npm:2.1019.1"],\
           ["fsevents", "patch:fsevents@npm%3A2.3.2#optional!builtin<compat/fsevents>::version=2.3.2&hash=df0bf1"]\
         ],\
         "linkType": "HARD"\
@@ -8456,7 +8456,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:20.14.11"],\
           ["@typescript-eslint/eslint-plugin", "virtual:44e03e6cb78931061317cced3f16fdb870ddeb05a8ea49728cb4e3c443d59cea2458e23cae0cdf72d9f42f926968c535ad93fba614e57b07abe87ad4c620e3ed#npm:7.16.1"],\
           ["@typescript-eslint/parser", "virtual:44e03e6cb78931061317cced3f16fdb870ddeb05a8ea49728cb4e3c443d59cea2458e23cae0cdf72d9f42f926968c535ad93fba614e57b07abe87ad4c620e3ed#npm:7.16.1"],\
-          ["aws-cdk", "npm:2.149.0"],\
+          ["aws-cdk", "npm:2.1019.1"],\
           ["aws-cdk-lib", "virtual:44e03e6cb78931061317cced3f16fdb870ddeb05a8ea49728cb4e3c443d59cea2458e23cae0cdf72d9f42f926968c535ad93fba614e57b07abe87ad4c620e3ed#npm:2.149.0"],\
           ["constructs", "npm:10.3.0"],\
           ["eslint", "virtual:44e03e6cb78931061317cced3f16fdb870ddeb05a8ea49728cb4e3c443d59cea2458e23cae0cdf72d9f42f926968c535ad93fba614e57b07abe87ad4c620e3ed#npm:9.29.0"],\
