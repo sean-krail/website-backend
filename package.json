@@ -29,7 +29,7 @@
     "@types/jest": "^30.0.0",
     "@types/node": "^24.0.3",
     "@typescript-eslint/eslint-plugin": "^7.16.1",
-    "@typescript-eslint/parser": "^7.16.1",
+    "@typescript-eslint/parser": "^8.35.0",
     "aws-cdk": "^2.1019.1",
     "eslint": "^9.29.0",
     "eslint-config-airbnb-typescript": "^18.0.0",
