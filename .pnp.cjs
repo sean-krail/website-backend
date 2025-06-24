@@ -32,7 +32,7 @@ const RAW_RUNTIME_STATE =
           ["@typescript-eslint/eslint-plugin", "virtual:44e03e6cb78931061317cced3f16fdb870ddeb05a8ea49728cb4e3c443d59cea2458e23cae0cdf72d9f42f926968c535ad93fba614e57b07abe87ad4c620e3ed#npm:7.16.1"],\
           ["@typescript-eslint/parser", "virtual:44e03e6cb78931061317cced3f16fdb870ddeb05a8ea49728cb4e3c443d59cea2458e23cae0cdf72d9f42f926968c535ad93fba614e57b07abe87ad4c620e3ed#npm:7.16.1"],\
           ["aws-cdk", "npm:2.1019.1"],\
-          ["aws-cdk-lib", "virtual:44e03e6cb78931061317cced3f16fdb870ddeb05a8ea49728cb4e3c443d59cea2458e23cae0cdf72d9f42f926968c535ad93fba614e57b07abe87ad4c620e3ed#npm:2.149.0"],\
+          ["aws-cdk-lib", "virtual:44e03e6cb78931061317cced3f16fdb870ddeb05a8ea49728cb4e3c443d59cea2458e23cae0cdf72d9f42f926968c535ad93fba614e57b07abe87ad4c620e3ed#npm:2.202.0"],\
           ["constructs", "npm:10.3.0"],\
           ["eslint", "virtual:44e03e6cb78931061317cced3f16fdb870ddeb05a8ea49728cb4e3c443d59cea2458e23cae0cdf72d9f42f926968c535ad93fba614e57b07abe87ad4c620e3ed#npm:9.29.0"],\
           ["eslint-config-airbnb-typescript", "virtual:44e03e6cb78931061317cced3f16fdb870ddeb05a8ea49728cb4e3c443d59cea2458e23cae0cdf72d9f42f926968c535ad93fba614e57b07abe87ad4c620e3ed#npm:18.0.0"],\
@@ -73,28 +73,30 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["@aws-cdk/asset-awscli-v1", [\
-      ["npm:2.2.202", {\
-        "packageLocation": "../../.yarn/berry/cache/@aws-cdk-asset-awscli-v1-npm-2.2.202-683e566b1a-10c0.zip/node_modules/@aws-cdk/asset-awscli-v1/",\
+      ["npm:2.2.240", {\
+        "packageLocation": "../../.yarn/berry/cache/@aws-cdk-asset-awscli-v1-npm-2.2.240-e454adc7e5-10c0.zip/node_modules/@aws-cdk/asset-awscli-v1/",\
         "packageDependencies": [\
-          ["@aws-cdk/asset-awscli-v1", "npm:2.2.202"]\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
-    ["@aws-cdk/asset-kubectl-v20", [\
-      ["npm:2.1.2", {\
-        "packageLocation": "../../.yarn/berry/cache/@aws-cdk-asset-kubectl-v20-npm-2.1.2-2c21f927f4-10c0.zip/node_modules/@aws-cdk/asset-kubectl-v20/",\
-        "packageDependencies": [\
-          ["@aws-cdk/asset-kubectl-v20", "npm:2.1.2"]\
+          ["@aws-cdk/asset-awscli-v1", "npm:2.2.240"]\
         ],\
         "linkType": "HARD"\
       }]\
     ]],\
     ["@aws-cdk/asset-node-proxy-agent-v6", [\
-      ["npm:2.0.3", {\
-        "packageLocation": "../../.yarn/berry/cache/@aws-cdk-asset-node-proxy-agent-v6-npm-2.0.3-752260bc2d-10c0.zip/node_modules/@aws-cdk/asset-node-proxy-agent-v6/",\
+      ["npm:2.1.0", {\
+        "packageLocation": "../../.yarn/berry/cache/@aws-cdk-asset-node-proxy-agent-v6-npm-2.1.0-cedeea62b8-10c0.zip/node_modules/@aws-cdk/asset-node-proxy-agent-v6/",\
         "packageDependencies": [\
-          ["@aws-cdk/asset-node-proxy-agent-v6", "npm:2.0.3"]\
+          ["@aws-cdk/asset-node-proxy-agent-v6", "npm:2.1.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@aws-cdk/cloud-assembly-schema", [\
+      ["npm:44.7.0", {\
+        "packageLocation": "../../.yarn/berry/cache/@aws-cdk-cloud-assembly-schema-npm-44.7.0-4985a59981-10c0.zip/node_modules/@aws-cdk/cloud-assembly-schema/",\
+        "packageDependencies": [\
+          ["@aws-cdk/cloud-assembly-schema", "npm:44.7.0"],\
+          ["jsonschema", "npm:1.4.1"],\
+          ["semver", "npm:7.7.2"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -2974,32 +2976,32 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["aws-cdk-lib", [\
-      ["npm:2.149.0", {\
-        "packageLocation": "../../.yarn/berry/cache/aws-cdk-lib-npm-2.149.0-9d0dc7216d-10c0.zip/node_modules/aws-cdk-lib/",\
+      ["npm:2.202.0", {\
+        "packageLocation": "../../.yarn/berry/cache/aws-cdk-lib-npm-2.202.0-74f5c79654-10c0.zip/node_modules/aws-cdk-lib/",\
         "packageDependencies": [\
-          ["aws-cdk-lib", "npm:2.149.0"]\
+          ["aws-cdk-lib", "npm:2.202.0"]\
         ],\
         "linkType": "SOFT"\
       }],\
-      ["virtual:44e03e6cb78931061317cced3f16fdb870ddeb05a8ea49728cb4e3c443d59cea2458e23cae0cdf72d9f42f926968c535ad93fba614e57b07abe87ad4c620e3ed#npm:2.149.0", {\
-        "packageLocation": "./.yarn/__virtual__/aws-cdk-lib-virtual-0844cb03e6/3/.yarn/berry/cache/aws-cdk-lib-npm-2.149.0-9d0dc7216d-10c0.zip/node_modules/aws-cdk-lib/",\
+      ["virtual:44e03e6cb78931061317cced3f16fdb870ddeb05a8ea49728cb4e3c443d59cea2458e23cae0cdf72d9f42f926968c535ad93fba614e57b07abe87ad4c620e3ed#npm:2.202.0", {\
+        "packageLocation": "./.yarn/__virtual__/aws-cdk-lib-virtual-fba7b5f87d/3/.yarn/berry/cache/aws-cdk-lib-npm-2.202.0-74f5c79654-10c0.zip/node_modules/aws-cdk-lib/",\
         "packageDependencies": [\
-          ["aws-cdk-lib", "virtual:44e03e6cb78931061317cced3f16fdb870ddeb05a8ea49728cb4e3c443d59cea2458e23cae0cdf72d9f42f926968c535ad93fba614e57b07abe87ad4c620e3ed#npm:2.149.0"],\
-          ["@aws-cdk/asset-awscli-v1", "npm:2.2.202"],\
-          ["@aws-cdk/asset-kubectl-v20", "npm:2.1.2"],\
-          ["@aws-cdk/asset-node-proxy-agent-v6", "npm:2.0.3"],\
+          ["aws-cdk-lib", "virtual:44e03e6cb78931061317cced3f16fdb870ddeb05a8ea49728cb4e3c443d59cea2458e23cae0cdf72d9f42f926968c535ad93fba614e57b07abe87ad4c620e3ed#npm:2.202.0"],\
+          ["@aws-cdk/asset-awscli-v1", "npm:2.2.240"],\
+          ["@aws-cdk/asset-node-proxy-agent-v6", "npm:2.1.0"],\
+          ["@aws-cdk/cloud-assembly-schema", "npm:44.7.0"],\
           ["@balena/dockerignore", "npm:1.0.2"],\
           ["@types/constructs", null],\
           ["case", "npm:1.6.3"],\
           ["constructs", "npm:10.3.0"],\
-          ["fs-extra", "npm:11.2.0"],\
-          ["ignore", "npm:5.3.1"],\
-          ["jsonschema", "npm:1.4.1"],\
+          ["fs-extra", "npm:11.3.0"],\
+          ["ignore", "npm:5.3.2"],\
+          ["jsonschema", "npm:1.5.0"],\
           ["mime-types", "npm:2.1.35"],\
           ["minimatch", "npm:3.1.2"],\
           ["punycode", "npm:2.3.1"],\
-          ["semver", "npm:7.6.3"],\
-          ["table", "npm:6.8.2"],\
+          ["semver", "npm:7.7.2"],\
+          ["table", "npm:6.9.0"],\
           ["yaml", "npm:1.10.2"]\
         ],\
         "packagePeers": [\
@@ -3161,10 +3163,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["brace-expansion", [\
-      ["npm:1.1.11", {\
-        "packageLocation": "../../.yarn/berry/cache/brace-expansion-npm-1.1.11-fb95eb05ad-10c0.zip/node_modules/brace-expansion/",\
+      ["npm:1.1.12", {\
+        "packageLocation": "../../.yarn/berry/cache/brace-expansion-npm-1.1.12-329e9ad7a1-10c0.zip/node_modules/brace-expansion/",\
         "packageDependencies": [\
-          ["brace-expansion", "npm:1.1.11"],\
+          ["brace-expansion", "npm:1.1.12"],\
           ["balanced-match", "npm:1.0.2"],\
           ["concat-map", "npm:0.0.1"]\
         ],\
@@ -4595,10 +4597,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["fs-extra", [\
-      ["npm:11.2.0", {\
-        "packageLocation": "../../.yarn/berry/cache/fs-extra-npm-11.2.0-6783080799-10c0.zip/node_modules/fs-extra/",\
+      ["npm:11.3.0", {\
+        "packageLocation": "../../.yarn/berry/cache/fs-extra-npm-11.3.0-a6b1b4d5ad-10c0.zip/node_modules/fs-extra/",\
         "packageDependencies": [\
-          ["fs-extra", "npm:11.2.0"],\
+          ["fs-extra", "npm:11.3.0"],\
           ["graceful-fs", "npm:4.2.11"],\
           ["jsonfile", "npm:6.1.0"],\
           ["universalify", "npm:2.0.0"]\
@@ -5142,6 +5144,13 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../.yarn/berry/cache/ignore-npm-5.3.1-f6947c5df7-10c0.zip/node_modules/ignore/",\
         "packageDependencies": [\
           ["ignore", "npm:5.3.1"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:5.3.2", {\
+        "packageLocation": "../../.yarn/berry/cache/ignore-npm-5.3.2-346d3ba017-10c0.zip/node_modules/ignore/",\
+        "packageDependencies": [\
+          ["ignore", "npm:5.3.2"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -6274,6 +6283,13 @@ const RAW_RUNTIME_STATE =
           ["jsonschema", "npm:1.4.1"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:1.5.0", {\
+        "packageLocation": "../../.yarn/berry/cache/jsonschema-npm-1.5.0-a1e4a2d9f7-10c0.zip/node_modules/jsonschema/",\
+        "packageDependencies": [\
+          ["jsonschema", "npm:1.5.0"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["keyv", [\
@@ -6587,7 +6603,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../.yarn/berry/cache/minimatch-npm-3.1.2-9405269906-10c0.zip/node_modules/minimatch/",\
         "packageDependencies": [\
           ["minimatch", "npm:3.1.2"],\
-          ["brace-expansion", "npm:1.1.11"]\
+          ["brace-expansion", "npm:1.1.12"]\
         ],\
         "linkType": "HARD"\
       }],\
@@ -8005,10 +8021,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["table", [\
-      ["npm:6.8.2", {\
-        "packageLocation": "../../.yarn/berry/cache/table-npm-6.8.2-e33ecc3c54-10c0.zip/node_modules/table/",\
+      ["npm:6.9.0", {\
+        "packageLocation": "../../.yarn/berry/cache/table-npm-6.9.0-5955281f93-10c0.zip/node_modules/table/",\
         "packageDependencies": [\
-          ["table", "npm:6.8.2"],\
+          ["table", "npm:6.9.0"],\
           ["ajv", "npm:8.12.0"],\
           ["lodash.truncate", "npm:4.4.2"],\
           ["slice-ansi", "npm:4.0.0"],\
@@ -8457,7 +8473,7 @@ const RAW_RUNTIME_STATE =
           ["@typescript-eslint/eslint-plugin", "virtual:44e03e6cb78931061317cced3f16fdb870ddeb05a8ea49728cb4e3c443d59cea2458e23cae0cdf72d9f42f926968c535ad93fba614e57b07abe87ad4c620e3ed#npm:7.16.1"],\
           ["@typescript-eslint/parser", "virtual:44e03e6cb78931061317cced3f16fdb870ddeb05a8ea49728cb4e3c443d59cea2458e23cae0cdf72d9f42f926968c535ad93fba614e57b07abe87ad4c620e3ed#npm:7.16.1"],\
           ["aws-cdk", "npm:2.1019.1"],\
-          ["aws-cdk-lib", "virtual:44e03e6cb78931061317cced3f16fdb870ddeb05a8ea49728cb4e3c443d59cea2458e23cae0cdf72d9f42f926968c535ad93fba614e57b07abe87ad4c620e3ed#npm:2.149.0"],\
+          ["aws-cdk-lib", "virtual:44e03e6cb78931061317cced3f16fdb870ddeb05a8ea49728cb4e3c443d59cea2458e23cae0cdf72d9f42f926968c535ad93fba614e57b07abe87ad4c620e3ed#npm:2.202.0"],\
           ["constructs", "npm:10.3.0"],\
           ["eslint", "virtual:44e03e6cb78931061317cced3f16fdb870ddeb05a8ea49728cb4e3c443d59cea2458e23cae0cdf72d9f42f926968c535ad93fba614e57b07abe87ad4c620e3ed#npm:9.29.0"],\
           ["eslint-config-airbnb-typescript", "virtual:44e03e6cb78931061317cced3f16fdb870ddeb05a8ea49728cb4e3c443d59cea2458e23cae0cdf72d9f42f926968c535ad93fba614e57b07abe87ad4c620e3ed#npm:18.0.0"],\
