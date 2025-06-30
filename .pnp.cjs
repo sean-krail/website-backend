@@ -43,7 +43,7 @@ const RAW_RUNTIME_STATE =
           ["jest", "virtual:44e03e6cb78931061317cced3f16fdb870ddeb05a8ea49728cb4e3c443d59cea2458e23cae0cdf72d9f42f926968c535ad93fba614e57b07abe87ad4c620e3ed#npm:30.0.2"],\
           ["lint-staged", "npm:15.2.7"],\
           ["pinst", "npm:3.0.0"],\
-          ["prettier", "npm:3.3.3"],\
+          ["prettier", "npm:3.6.2"],\
           ["rimraf", "npm:6.0.1"],\
           ["source-map-support", "npm:0.5.21"],\
           ["ts-jest", "virtual:44e03e6cb78931061317cced3f16fdb870ddeb05a8ea49728cb4e3c443d59cea2458e23cae0cdf72d9f42f926968c535ad93fba614e57b07abe87ad4c620e3ed#npm:29.2.3"],\
@@ -7245,10 +7245,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["prettier", [\
-      ["npm:3.3.3", {\
-        "packageLocation": "./.yarn/unplugged/prettier-npm-3.3.3-e811f023f3/node_modules/prettier/",\
+      ["npm:3.6.2", {\
+        "packageLocation": "./.yarn/unplugged/prettier-npm-3.6.2-2668152203/node_modules/prettier/",\
         "packageDependencies": [\
-          ["prettier", "npm:3.3.3"]\
+          ["prettier", "npm:3.6.2"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -8481,7 +8481,7 @@ const RAW_RUNTIME_STATE =
           ["jest", "virtual:44e03e6cb78931061317cced3f16fdb870ddeb05a8ea49728cb4e3c443d59cea2458e23cae0cdf72d9f42f926968c535ad93fba614e57b07abe87ad4c620e3ed#npm:30.0.2"],\
           ["lint-staged", "npm:15.2.7"],\
           ["pinst", "npm:3.0.0"],\
-          ["prettier", "npm:3.3.3"],\
+          ["prettier", "npm:3.6.2"],\
           ["rimraf", "npm:6.0.1"],\
           ["source-map-support", "npm:0.5.21"],\
           ["ts-jest", "virtual:44e03e6cb78931061317cced3f16fdb870ddeb05a8ea49728cb4e3c443d59cea2458e23cae0cdf72d9f42f926968c535ad93fba614e57b07abe87ad4c620e3ed#npm:29.2.3"],\
