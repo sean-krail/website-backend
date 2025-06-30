@@ -33,7 +33,7 @@ const RAW_RUNTIME_STATE =
           ["@typescript-eslint/parser", "virtual:44e03e6cb78931061317cced3f16fdb870ddeb05a8ea49728cb4e3c443d59cea2458e23cae0cdf72d9f42f926968c535ad93fba614e57b07abe87ad4c620e3ed#npm:8.35.0"],\
           ["aws-cdk", "npm:2.1019.1"],\
           ["aws-cdk-lib", "virtual:44e03e6cb78931061317cced3f16fdb870ddeb05a8ea49728cb4e3c443d59cea2458e23cae0cdf72d9f42f926968c535ad93fba614e57b07abe87ad4c620e3ed#npm:2.202.0"],\
-          ["constructs", "npm:10.3.0"],\
+          ["constructs", "npm:10.4.2"],\
           ["eslint", "virtual:44e03e6cb78931061317cced3f16fdb870ddeb05a8ea49728cb4e3c443d59cea2458e23cae0cdf72d9f42f926968c535ad93fba614e57b07abe87ad4c620e3ed#npm:9.29.0"],\
           ["eslint-config-airbnb-typescript", "virtual:44e03e6cb78931061317cced3f16fdb870ddeb05a8ea49728cb4e3c443d59cea2458e23cae0cdf72d9f42f926968c535ad93fba614e57b07abe87ad4c620e3ed#npm:18.0.0"],\
           ["eslint-config-prettier", "virtual:44e03e6cb78931061317cced3f16fdb870ddeb05a8ea49728cb4e3c443d59cea2458e23cae0cdf72d9f42f926968c535ad93fba614e57b07abe87ad4c620e3ed#npm:10.1.5"],\
@@ -2993,7 +2993,7 @@ const RAW_RUNTIME_STATE =
           ["@balena/dockerignore", "npm:1.0.2"],\
           ["@types/constructs", null],\
           ["case", "npm:1.6.3"],\
-          ["constructs", "npm:10.3.0"],\
+          ["constructs", "npm:10.4.2"],\
           ["fs-extra", "npm:11.3.0"],\
           ["ignore", "npm:5.3.2"],\
           ["jsonschema", "npm:1.5.0"],\
@@ -3555,10 +3555,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["constructs", [\
-      ["npm:10.3.0", {\
-        "packageLocation": "../../.yarn/berry/cache/constructs-npm-10.3.0-5bd9fbc3a8-10c0.zip/node_modules/constructs/",\
+      ["npm:10.4.2", {\
+        "packageLocation": "../../.yarn/berry/cache/constructs-npm-10.4.2-7bc7660b42-10c0.zip/node_modules/constructs/",\
         "packageDependencies": [\
-          ["constructs", "npm:10.3.0"]\
+          ["constructs", "npm:10.4.2"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -8418,7 +8418,7 @@ const RAW_RUNTIME_STATE =
           ["@typescript-eslint/parser", "virtual:44e03e6cb78931061317cced3f16fdb870ddeb05a8ea49728cb4e3c443d59cea2458e23cae0cdf72d9f42f926968c535ad93fba614e57b07abe87ad4c620e3ed#npm:8.35.0"],\
           ["aws-cdk", "npm:2.1019.1"],\
           ["aws-cdk-lib", "virtual:44e03e6cb78931061317cced3f16fdb870ddeb05a8ea49728cb4e3c443d59cea2458e23cae0cdf72d9f42f926968c535ad93fba614e57b07abe87ad4c620e3ed#npm:2.202.0"],\
-          ["constructs", "npm:10.3.0"],\
+          ["constructs", "npm:10.4.2"],\
           ["eslint", "virtual:44e03e6cb78931061317cced3f16fdb870ddeb05a8ea49728cb4e3c443d59cea2458e23cae0cdf72d9f42f926968c535ad93fba614e57b07abe87ad4c620e3ed#npm:9.29.0"],\
           ["eslint-config-airbnb-typescript", "virtual:44e03e6cb78931061317cced3f16fdb870ddeb05a8ea49728cb4e3c443d59cea2458e23cae0cdf72d9f42f926968c535ad93fba614e57b07abe87ad4c620e3ed#npm:18.0.0"],\
           ["eslint-config-prettier", "virtual:44e03e6cb78931061317cced3f16fdb870ddeb05a8ea49728cb4e3c443d59cea2458e23cae0cdf72d9f42f926968c535ad93fba614e57b07abe87ad4c620e3ed#npm:10.1.5"],\
