@@ -1,21 +1,24 @@
 {
   "name": "website-backend",
   "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.32.1+sha256.9b943b94bc8f55efb993aad8e44b538e6b091e60a9e4a944dcde869855f233e3",
   "bin": "dist/bin/website-backend.js",
   "scripts": {
     "build": "tsc",
     "build-function": "cd functions/counter && cargo lambda build --release --arm64",
-    "build-all": "yarn build-function && yarn build",
+    "build-all": "pnpm build-function && pnpm build",
     "start": "cd functions/counter && cargo lambda watch --env-var TABLE_NAME=Counter",
     "watch": "tsc -w",
     "test": "jest",
     "cdk": "cdk",
     "clean": "rimraf cdk.out/ dist/",
     "clean-function": "cd functions/counter && cargo clean",
-    "clean-all": "yarn clean && yarn clean-function",
+    "clean-all": "pnpm clean && pnpm clean-function",
     "format": "eslint --fix bin/ lib/ test/ && prettier --write bin/ lib/ test/",
     "format-function": "cd functions/counter && cargo fmt",
-    "format-all": "yarn format && yarn format-function",
+    "format-all": "pnpm format && pnpm format-function",
     "postinstall": "husky",
     "prepack": "pinst --disable",
     "postpack": "pinst --enable"
@@ -26,30 +29,31 @@
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@types/jest": "^30.0.0",
-    "@types/node": "^24.0.3",
+    "@types/node": "^25.5.0",
     "@typescript-eslint/eslint-plugin": "^8.35.0",
     "@typescript-eslint/parser": "^8.35.0",
     "aws-cdk": "^2.1019.1",
-    "eslint": "^9.30.0",
+    "eslint": "^10.1.0",
     "eslint-config-airbnb-typescript": "^18.0.0",
     "eslint-config-prettier": "^10.1.5",
     "eslint-import-resolver-node": "^0.3.9",
     "eslint-plugin-import": "^2.32.0",
     "husky": "^9.1.7",
-    "jest": "^30.0.2",
-    "lint-staged": "^15.2.7",
+    "jest": "^30.3.0",
+    "lint-staged": "^16.4.0",
     "pinst": "^3.0.0",
     "prettier": "^3.6.2",
     "rimraf": "^6.0.1",
     "ts-jest": "^29.4.0",
-    "typescript": "~5.5.3"
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.57.1"
   },
   "lint-staged": {
     "{bin,lib,test}/**/*.ts": [
       "eslint --fix",
       "prettier --write"
     ]
-  },
-  "packageManager": "yarn@4.3.1"
+  }
 }

@@ -6,6 +6,8 @@ Right now, it just provides an endpoint to increment a count, but plan to host m
 
 ## Development
 
+rust must be setup first: https://rust-lang.org/learn/get-started
+
 There's a Lambda function written in Rust located at `functions/counter`. There you can run normal `cargo` commands to build, test, etc. You'll also need to install [Cargo Lambda](https://www.cargo-lambda.info/guide/installation.html) in your development environment. It's used to build a target for the Lambda environment.
 
 ```sh
@@ -19,53 +21,42 @@ The CDK components are split into three parts: `bin/`, `lib/`, `test/`. `bin/` h
 For example, to build everything and synthesize the Cfn templates, run:
 
 ```sh
-yarn build-function
-yarn build
-yarn cdk synth
+pnpm build-function
+pnpm build
+pnpm cdk synth
 ```
 
 ## Updating
 
-### Updating node via [mise](https://mise.jdx.dev/getting-started.html)
+### Updating pnpm
 
-There's a `.mise.toml in this project root, so all you need to run is:
-
-```sh
-mise use node@20
-node -v
-npm -v
-```
-
-### Updating yarn
-
-See https://yarnpkg.com/getting-started/install.
+See https://pnpm.io/installation.
 
 ```sh
 # assuming you have already run:
-# corepack enable
-yarn set version stable
+# corepack install
+corepack up
 ```
 
-### Updating npm packages
+### Updating pnpm packages
 
 ```sh
-yarn up -i '*' '@*/*'
+pnpm up --interactive '*' '@*/*'
 ```
 
 ### Updating cargo crates
 
 ```sh
 cargo update
-cargo upgrade
 ```
 
 ## Useful CDK commands
 
 The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
-- `yarn build` compile typescript to js
-- `yarn watch` watch for changes and compile
-- `yarn test` perform the jest unit tests
-- `yarn cdk deploy` deploy this stack to your default AWS account/region
-- `yarn cdk diff` compare deployed stack with current state
-- `yarn cdk synth` emits the synthesized CloudFormation template
+- `pnpm build` compile typescript to js
+- `pnpm watch` watch for changes and compile
+- `pnpm test` perform the jest unit tests
+- `pnpm cdk deploy` deploy this stack to your default AWS account/region
+- `pnpm cdk diff` compare deployed stack with current state
+- `pnpm cdk synth` emits the synthesized CloudFormation template

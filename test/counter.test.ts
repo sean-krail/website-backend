@@ -1,6 +1,6 @@
 import { App } from "aws-cdk-lib";
 import { Template } from "aws-cdk-lib/assertions";
-import { CounterStack } from "../lib/counter-stack";
+import { CounterStack } from "../lib/counter-stack.js";
 
 test("DynamoDB Table is created", () => {
   const app = new App();

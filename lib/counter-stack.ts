@@ -26,7 +26,7 @@ export class CounterStack extends Stack {
 
     const fn = new Function(this, "Function", {
       // Directory with our `bootstrap` executable
-      // You must run `yarn build-function` or `yarn build-all` first!
+      // You must run `pnpm build-function` or `pnpm build-all` first!
       code: Code.fromAsset("./functions/counter/target/lambda/counter"),
       runtime: Runtime.PROVIDED_AL2023,
       architecture: Architecture.ARM_64,
