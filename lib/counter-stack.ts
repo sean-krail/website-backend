@@ -6,7 +6,7 @@ import {
 } from "aws-cdk-lib/aws-certificatemanager";
 import { AttributeType, Table } from "aws-cdk-lib/aws-dynamodb";
 import { Architecture, Code, Function, Runtime } from "aws-cdk-lib/aws-lambda";
-import { RetentionDays } from "aws-cdk-lib/aws-logs";
+import { LogGroup, LogGroupClass, RetentionDays } from "aws-cdk-lib/aws-logs";
 import { Construct } from "constructs";
 
 const DOMAIN_NAME = "api.seankrail.dev";
@@ -24,7 +24,13 @@ export class CounterStack extends Stack {
       },
     });
 
+    const logGroup = new LogGroup(this, "LogGroup", {
+      logGroupName: "/aws/lambda/Counter",
+      retention: RetentionDays.ONE_MONTH,
+      logGroupClass: LogGroupClass.INFREQUENT_ACCESS,
+    });
     const fn = new Function(this, "Function", {
+      functionName: "Counter",
       // Directory with our `bootstrap` executable
       // You must run `pnpm build-function` or `pnpm build-all` first!
       code: Code.fromAsset("./functions/counter/target/lambda/counter"),
@@ -34,9 +40,10 @@ export class CounterStack extends Stack {
       timeout: Duration.seconds(10),
       environment: {
         TABLE_NAME: table.tableName,
+        CORS_ORIGIN: ORIGIN,
       },
       reservedConcurrentExecutions: 2,
-      logRetention: RetentionDays.ONE_DAY,
+      logGroup,
     });
     table.grantReadWriteData(fn);
 

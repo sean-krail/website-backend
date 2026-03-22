@@ -2,5 +2,6 @@
   "rust-analyzer.linkedProjects": [
     "./functions/counter/Cargo.toml"
   ],
-  "typescript.enablePromptUseWorkspaceTsdk": true
+  "js/ts.experimental.useTsgo": true,
+  "js/ts.tsdk.promptToUseWorkspaceVersion": true
 }

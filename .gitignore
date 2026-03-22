@@ -1,9 +1,6 @@
-# project
 cdk.out/
 dist/
-
-# pnpm
 node_modules/
-
-# pip
-.venv
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.json

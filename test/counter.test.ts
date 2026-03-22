@@ -33,18 +33,8 @@ test("Lambda Function is created and references DynamoDB Table", () => {
         TABLE_NAME: {
           Ref: tableRef,
         },
+        CORS_ORIGIN: "https://seankrail.dev",
       },
     },
-  });
-});
-
-test("Lambda Function for CloudWatch logging is created", () => {
-  const app = new App();
-  const stack = new CounterStack(app, "TestCounterStack");
-
-  const template = Template.fromStack(stack);
-
-  template.hasResourceProperties("AWS::Lambda::Function", {
-    Handler: "index.handler",
   });
 });
