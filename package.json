@@ -45,7 +45,7 @@
     "@types/node": "^25.5.0",
     "@typescript-eslint/eslint-plugin": "^8.57.2",
     "@typescript-eslint/parser": "^8.57.2",
-    "@typescript/native-preview": "7.0.0-dev.20260327.2",
+    "@typescript/native-preview": "7.0.0-dev.20260328.1",
     "aws-cdk": "^2.1114.1",
     "concurrently": "^9.2.1",
     "eslint": "^10.1.0",
