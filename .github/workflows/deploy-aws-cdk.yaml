@@ -1,10 +1,8 @@
 name: Deploy AWS CDK
-
 on:
   push:
     branches:
       - main
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -17,11 +15,9 @@ jobs:
       NODE_OPTIONS: --max-old-space-size=4096
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
-
       - name: Setup Cargo cache
         uses: actions/cache@v4
         with:
@@ -33,14 +29,11 @@ jobs:
             functions/counter/target/
           key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
           restore-keys: ${{ runner.os }}-cargo-
-
       - name: Install Cargo Lambda
         run: |
           pip install cargo-lambda
-
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
-
       - name: Setup pnpm cache
         uses: actions/cache@v4
         with:
@@ -48,34 +41,27 @@ jobs:
           key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-
-
       - name: Install dependencies
         run: |
           pnpm install
-
       - uses: goto-bus-stop/setup-zig@v2
-
       - name: Build Lambda function
         run: |
-          pnpm build-function
+          pnpm build:function
           ls functions/counter/target/lambda/counter/bootstrap
-
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
           role-session-name: gh-actions-sean-krail-website-backend-main
           aws-region: ${{ env.AWS_DEFAULT_REGION }}
-
       - name: AWS CDK Synth
         run: |
-          pnpm build
+          pnpm build:cdk
           pnpm cdk synth
-
       - name: AWS CDK Diff
         run: |
           pnpm cdk diff
-
       - name: AWS CDK Deploy
         run: |
           pnpm cdk deploy --require-approval never

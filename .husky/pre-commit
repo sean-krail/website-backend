@@ -1,4 +1,4 @@
 pnpm install
-pnpm build-all
+pnpm build
 pnpm test
 pnpm lint-staged

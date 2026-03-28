@@ -12,6 +12,8 @@ There's a Lambda function written in Rust located at `functions/counter`. There 
 
 ```sh
 cargo lambda build --release --arm64
+# or
+# pnpm build:function
 ```
 
 This produces `target/lambda/counter/bootstrap`. This is referenced in our CounterStack at `lib/counter-stack.ts`. The `target/lambda/counter` directory is zipped, uploaded to S3, and then used to run the Lambda function.
@@ -21,7 +23,7 @@ The CDK components are split into three parts: `bin/`, `lib/`, `test/`. `bin/` h
 For example, to build everything and synthesize the Cfn templates, run:
 
 ```sh
-pnpm build-function
+# pnpm build:cdk & pnpm build:function & wait
 pnpm build
 pnpm cdk synth
 ```
@@ -41,22 +43,23 @@ corepack up
 ### Updating pnpm packages
 
 ```sh
-pnpm up --interactive '*' '@*/*'
+pnpm up --interactive --latest
 ```
 
 ### Updating cargo crates
 
 ```sh
 cargo update
+cargo upgrade # requires: cargo-edit
 ```
 
 ## Useful CDK commands
 
 The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
-- `pnpm build` compile typescript to js
-- `pnpm watch` watch for changes and compile
-- `pnpm test` perform the jest unit tests
+- `pnpm build:cdk` compile typescript to js
+- `pnpm watch:cdk` watch for changes and compile
+- `pnpm test:cdk` perform the jest unit tests
 - `pnpm cdk deploy` deploy this stack to your default AWS account/region
 - `pnpm cdk diff` compare deployed stack with current state
 - `pnpm cdk synth` emits the synthesized CloudFormation template
