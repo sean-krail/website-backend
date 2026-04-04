@@ -30,9 +30,7 @@
     "up": "concurrently 'corepack up && pnpm up:cdk' 'pnpm up:function'",
     "up:cdk": "pnpm update --interactive --latest",
     "up:function": "cargo upgrade --manifest-path functions/counter/Cargo.toml",
-    "postinstall": "husky",
-    "prepack": "pinst --disable",
-    "postpack": "pinst --enable"
+    "prepare": "husky"
   },
   "dependencies": {
     "aws-cdk-lib": "^2.248.0",
@@ -56,7 +54,6 @@
     "husky": "^9.1.7",
     "jest": "^30.3.0",
     "lint-staged": "^16.4.0",
-    "pinst": "^3.0.0",
     "prettier": "^3.8.1",
     "rimraf": "^6.1.3",
     "ts-jest": "^29.4.9",
