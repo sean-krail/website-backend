@@ -37,7 +37,7 @@ jobs:
         run: |
           pip install cargo-lambda
       - name: Setup pnpm
-        uses: pnpm/action-setup@v5
+        uses: pnpm/action-setup@v6
       - name: Setup pnpm cache
         uses: actions/cache@v5
         with:
