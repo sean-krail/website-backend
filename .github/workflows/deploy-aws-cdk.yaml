@@ -69,3 +69,4 @@ jobs:
       - name: AWS CDK Deploy
         run: |
           pnpm cdk deploy --require-approval never
+          pnpm cdk gc --confirm false --rollback-buffer-days 1 --unstable gc
