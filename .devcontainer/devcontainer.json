@@ -1,17 +1,17 @@
 {
   "name": "website-backend",
-  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+  "image": "mcr.microsoft.com/devcontainers/base:debian",
   "features": {
     "ghcr.io/devcontainers/features/node:2": {
-      "version": "24.14.0",
-      "nodeGypDependencies": true,
-      "pnpmVersion": "none"
+      "version": "latest",
+      "pnpmVersion": "latest"
     },
     "ghcr.io/devcontainers/features/rust:1": {
-      "version": "stable",
+      "version": "latest",
       "profile": "default"
     },
-    "ghcr.io/devcontainers/features/aws-cli:1": {}
+    "ghcr.io/devcontainers/features/aws-cli:1": {},
+    "ghcr.io/devcontainers-extra/features/fish-apt-get:1": {}
   },
   "postCreateCommand": "./postCreateCommand.sh",
   "customizations": {
@@ -32,5 +32,5 @@
       }
     }
   },
-  "remoteUser": "devcontainer"
+  "remoteUser": "vscode"
 }
