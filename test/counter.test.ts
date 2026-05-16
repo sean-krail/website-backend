@@ -33,7 +33,7 @@ test("Lambda Function is created and references DynamoDB Table", () => {
         TABLE_NAME: {
           Ref: tableRef,
         },
-        CORS_ORIGIN: "https://seankrail.dev",
+        CORS_ORIGIN: "https://sean.krail.cloud",
       },
     },
   });

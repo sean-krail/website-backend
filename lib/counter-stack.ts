@@ -3,14 +3,15 @@ import { EndpointType, LambdaRestApi } from "aws-cdk-lib/aws-apigateway";
 import {
   Certificate,
   CertificateValidation,
+  KeyAlgorithm,
 } from "aws-cdk-lib/aws-certificatemanager";
 import { AttributeType, Table } from "aws-cdk-lib/aws-dynamodb";
 import { Architecture, Code, Function, Runtime } from "aws-cdk-lib/aws-lambda";
 import { LogGroup, LogGroupClass, RetentionDays } from "aws-cdk-lib/aws-logs";
 import { Construct } from "constructs";
 
-const DOMAIN_NAME = "api.seankrail.dev";
-const ORIGIN = "https://seankrail.dev";
+const DOMAIN_NAME = "api.sean.krail.cloud";
+const ORIGIN = "https://sean.krail.cloud";
 
 export class CounterStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
@@ -49,6 +50,7 @@ export class CounterStack extends Stack {
 
     const certificate = new Certificate(this, "Certificate", {
       domainName: DOMAIN_NAME,
+      keyAlgorithm: KeyAlgorithm.EC_SECP384R1,
       validation: CertificateValidation.fromDns(),
     });
 

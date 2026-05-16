@@ -1,4 +1,4 @@
-# [seankrail.dev](https://seankrail.dev/)'s backend
+# [sean.krail.cloud](https://sean.krail.cloud/)'s backend
 
 My personal website's backend built using TypeScript, AWS CDK, and Rust, hosted on AWS Lambda and DynamoDB, and continuously deployed by GitHub Actions.
 
