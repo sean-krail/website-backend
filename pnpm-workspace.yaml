@@ -1,3 +1,2 @@
 allowBuilds:
   unrs-resolver: true
-useNodeVersion: 24.14.0

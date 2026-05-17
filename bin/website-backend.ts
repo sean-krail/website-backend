@@ -5,6 +5,9 @@ import { CounterStack } from "../lib/counter-stack.js";
 const app = new App();
 
 new CounterStack(app, "CounterStack", {
+  env: {
+    region: "us-east-1",
+  },
   tags: {
     App: "website-backend",
     CloudFormationOwned: "true",

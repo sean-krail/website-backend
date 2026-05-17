@@ -3,7 +3,6 @@ import { EndpointType, LambdaRestApi } from "aws-cdk-lib/aws-apigateway";
 import {
   Certificate,
   CertificateValidation,
-  KeyAlgorithm,
 } from "aws-cdk-lib/aws-certificatemanager";
 import { AttributeType, Table } from "aws-cdk-lib/aws-dynamodb";
 import { Architecture, Code, Function, Runtime } from "aws-cdk-lib/aws-lambda";
@@ -50,7 +49,8 @@ export class CounterStack extends Stack {
 
     const certificate = new Certificate(this, "Certificate", {
       domainName: DOMAIN_NAME,
-      keyAlgorithm: KeyAlgorithm.EC_SECP384R1,
+      // Not suppored by CloudFront, use the default
+      // keyAlgorithm: KeyAlgorithm.EC_SECP384R1,
       validation: CertificateValidation.fromDns(),
     });
 

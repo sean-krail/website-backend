@@ -3,5 +3,6 @@
     "./functions/counter/Cargo.toml"
   ],
   "js/ts.experimental.useTsgo": true,
-  "js/ts.tsdk.promptToUseWorkspaceVersion": true
+  "js/ts.tsdk.promptToUseWorkspaceVersion": true,
+  "typescript.native-preview.tsdk": "/root/git/website-backend/node_modules/@typescript/native-preview"
 }
