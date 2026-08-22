@@ -33,7 +33,7 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "aws-cdk-lib": "^2.264.0",
+    "aws-cdk-lib": "^2.265.0",
     "constructs": "^10.8.1",
     "source-map-support": "^0.5.21"
   },
@@ -44,8 +44,8 @@
     "@typescript-eslint/eslint-plugin": "^8.67.0",
     "@typescript-eslint/parser": "^8.67.0",
     "@typescript/native-preview": "7.0.0-dev.20260707.2",
-    "aws-cdk": "^2.1135.1",
-    "concurrently": "^10.0.4",
+    "aws-cdk": "^2.1137.0",
+    "concurrently": "^10.0.5",
     "eslint": "^10.8.1",
     "eslint-config-airbnb-typescript": "^18.0.0",
     "eslint-config-prettier": "^10.1.8",
